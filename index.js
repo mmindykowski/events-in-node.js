@@ -32,6 +32,10 @@ class Puller extends EventEmitter {
       });
     }, 1000);
   }
+  stop(callback) {
+    this.removeListener("getData", callback);
+    clearInterval(this.innterval);
+  }
 }
 
 const puller = new Puller("https://example.com");
@@ -39,3 +43,7 @@ const puller = new Puller("https://example.com");
 puller.on("getData", printData);
 
 puller.pull();
+
+setTimeout(() => {
+  puller.stop(printData);
+}, 10000);
