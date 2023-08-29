@@ -23,10 +23,14 @@ class Puller extends EventEmitter {
   }
 
   pull() {
-    this.emit("getData", {
-      data: "Pobrane dane",
-      url: this.url,
-    });
+    // interwał
+
+    this.innterval = setInterval(() => {
+      this.emit("getData", {
+        data: "Pobrane dane",
+        url: this.url,
+      });
+    }, 1000);
   }
 }
 
