@@ -15,6 +15,10 @@ function printData(data) {
   console.log(`Dane ${data.data} z adresu ${data.url}`);
 }
 
+function confirm() {
+  console.log("Pobieram");
+}
+
 class Puller extends EventEmitter {
   constructor(url) {
     super();
@@ -41,6 +45,7 @@ class Puller extends EventEmitter {
 const puller = new Puller("https://example.com");
 
 puller.on("getData", printData);
+puller.on("getData", confirm);
 
 puller.pull();
 
