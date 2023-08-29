@@ -37,7 +37,7 @@ class Puller extends EventEmitter {
     }, 1000);
   }
   stop(callback) {
-    this.removeListener("getData", callback);
+    this.removeAllListeners("getData", callback);
     clearInterval(this.innterval);
   }
 }
